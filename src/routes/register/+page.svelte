@@ -1,40 +1,89 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Input from '$lib/components/Input.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Background from '$lib/components/Background.svelte';
+
+	let errors = $page.form;
+
+	let username = '';
+
+	const handleErros = (message: string) => {
+		if (errors === null) return false;
+
+		let found = false;
+
+		if (Array.isArray(errors.status)) {
+			errors.status.forEach((msgErro: string) => {
+				if (msgErro === message) {
+					found = true;
+				}
+			});
+		}
+
+		return found;
+	};
 </script>
 
 <div class="background">
 	<Background />
 </div>
 
-<form class="main-container">
+<form class="main-container" method="post">
 	<div>
 		<h2>Cadastro de usuário</h2>
 		<p>Já possui uma conta? <a href="/login">Entre agora</a></p>
 	</div>
 
 	<div class="form-container">
-		<label for="username"> Nome de usuário </label>
-		<Input id="username" />
+		<label for="username">
+			Nome de usuário {#if handleErros('username is a required field')}
+				<b class="error-message">*Este campo é obrigatório</b>
+			{:else if handleErros('username must be at least 3 characters')}
+				<b class="error-message">*Este campo precisa ter mais de 3 caracteres</b>
+			{/if}</label
+		>
+		<Input id="username" name="username" />
 
 		<div class="name-container">
 			<div>
-				<label for="name"> Nome </label>
-				<Input id="name" />
+				<label for="name">
+					Nome {#if handleErros('name is a required field')}
+						<b class="error-message">*Este campo é obrigatório</b>
+					{:else if handleErros('name must be at least 3 characters')}
+						<b class="error-message">*Este campo precisa ter mais de 3 caracteres</b>
+					{/if}</label
+				>
+				<Input id="name" name="name" />
 			</div>
 
 			<div>
-				<label for="lastname"> Sobrenome </label>
-				<Input id="lastname" />
+				<label for="lastname">
+					Sobrenome {#if handleErros('lastname is a required field')}
+						<b class="error-message">*Este campo é obrigatório</b>
+					{:else if handleErros('lastname must be at least 3 characters')}
+						<b class="error-message">*Este campo precisa ter mais de 3 caracteres</b>
+					{/if}</label
+				>
+				<Input id="lastname" name="lastname" />
 			</div>
 		</div>
 
-		<label for="email"> E-mail </label>
-		<Input id="email" type="email" />
+		<label for="email">
+			E-mail {#if handleErros('email is a required field')}
+				<b class="error-message">*Este campo é obrigatório</b>
+			{/if}</label
+		>
+		<Input id="email" type="email" name="email" />
 
-		<label for="password"> Senha </label>
-		<Input id="password" type="password" />
+		<label for="password">
+			Senha {#if handleErros('password is a required field')}
+				<b class="error-message">*Este campo é obrigatório</b>
+			{:else if handleErros('password must be at least 6 characters')}
+				<b class="error-message">*Este campo precisa ter mais de 6 caracteres</b>
+			{/if}</label
+		>
+		<Input id="password" type="password" name="password" />
 	</div>
 
 	<div class="button-container">
@@ -61,6 +110,15 @@
 	p {
 		text-align: center;
 		font-size: 12px;
+	}
+
+	.error-message {
+		font-size: 10px;
+		font-weight: normal;
+
+		margin-left: 10px;
+
+		color: #f35c5c;
 	}
 
 	/* FORM */
