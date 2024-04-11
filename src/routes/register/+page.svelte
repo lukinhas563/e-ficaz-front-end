@@ -6,8 +6,6 @@
 
 	let errors = $page.form;
 
-	let username = '';
-
 	const handleErros = (message: string) => {
 		if (errors === null) return false;
 
