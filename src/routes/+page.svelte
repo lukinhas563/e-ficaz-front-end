@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { user } from '$lib/store/user';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Background from '$lib/components/Background.svelte';
+
+	export let data;
 </script>
 
-<Navbar {user} />
+<Navbar data={data.user} />
 
 <Background />
 

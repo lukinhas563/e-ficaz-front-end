@@ -2,15 +2,21 @@
 	import { goto } from '$app/navigation';
 	import Button from './Button.svelte';
 
-	export let user;
+	export let data;
+
+	console.log(data);
 </script>
 
 <nav>
 	<h1><a href="/">LOGO</a></h1>
 
 	<div>
-		<a href="/login">ENTRAR</a>
-		<Button on:click={() => goto('/register')}>Cadastrar</Button>
+		{#if data}
+			<a href={`/${data.id}`}>Perfil</a>
+		{:else}
+			<a href="/login">Entrar</a>
+			<Button on:click={() => goto('/register')}>Cadastrar</Button>
+		{/if}
 	</div>
 </nav>
 

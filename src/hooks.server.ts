@@ -1,5 +1,4 @@
 import { redirect } from '@sveltejs/kit';
-import { user } from '$lib/store/user';
 
 const public_paths = ['/login', '/register', '/'];
 
@@ -20,7 +19,7 @@ export async function handle({ event, resolve }) {
 	if (getUser) {
 		const newUser = JSON.parse(getUser);
 
-		user.set(newUser);
+		event.locals.user = newUser;
 	}
 
 	const response = await resolve(event);
