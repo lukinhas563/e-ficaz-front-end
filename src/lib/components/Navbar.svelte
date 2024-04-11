@@ -17,7 +17,13 @@
 		display: flex;
 		justify-content: space-between;
 
-		padding: 10px;
+		padding: 20px;
+	}
+
+	a {
+		text-decoration: none;
+
+		color: var(--main-color);
 	}
 
 	div {
