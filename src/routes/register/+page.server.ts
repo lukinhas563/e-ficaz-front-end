@@ -2,7 +2,7 @@ import { redirect } from '@sveltejs/kit';
 import { object, string } from 'yup';
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, fetch }) => {
 		const data = await request.formData();
 
 		let success = false;
@@ -32,6 +32,22 @@ export const actions = {
 				},
 				{ abortEarly: false }
 			);
+
+			await fetch('https://e-ficaz-api.onrender.com/register', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					user: {
+						user_name: username,
+						first_name: name,
+						last_name: lastname,
+						email: email,
+						password_hash: password
+					}
+				})
+			});
 
 			success = true;
 		} catch (error) {

@@ -29,7 +29,7 @@
 
 <form class="main-container" method="post">
 	<div class="header-container">
-		<h2>Cadastro de usuário</h2>
+		<h2>Área de login</h2>
 		<p>Não possui uma conta? <a href="/register">Cadastre-se agora</a></p>
 	</div>
 

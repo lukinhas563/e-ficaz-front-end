@@ -1,6 +1,8 @@
 <script lang="ts">
-	import Button from './Button.svelte';
 	import { goto } from '$app/navigation';
+	import Button from './Button.svelte';
+
+	export let user;
 </script>
 
 <nav>

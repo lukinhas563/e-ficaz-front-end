@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { user } from '$lib/store/user';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Background from '$lib/components/Background.svelte';
 </script>
 
-<Navbar />
+<Navbar {user} />
 
 <Background />
 
