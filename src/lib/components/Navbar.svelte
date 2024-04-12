@@ -1,10 +1,9 @@
 <script lang="ts">
+	import type { InterfaceUser } from '$lib/store/user';
 	import { goto } from '$app/navigation';
 	import Button from './Button.svelte';
 
-	export let data;
-
-	console.log(data);
+	export let data: InterfaceUser;
 </script>
 
 <nav>

@@ -10,6 +10,8 @@
 
 		--input-background: #1a1d25;
 		--input-focus: #724abc;
+
+		--card-background: #0b0c0f;
 	}
 
 	:global(*) {
