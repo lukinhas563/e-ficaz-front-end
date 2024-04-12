@@ -21,7 +21,7 @@
 
 		max-width: 0;
 
-		z-index: 2;
+		z-index: 4;
 
 		background-color: var(--background-color);
 
@@ -41,7 +41,7 @@
 		max-height: 0;
 		opacity: 0;
 
-		z-index: 1;
+		z-index: 3;
 
 		background-color: rgba(0, 0, 0, 0.5);
 		transition: opacity 100ms ease-in-out;
