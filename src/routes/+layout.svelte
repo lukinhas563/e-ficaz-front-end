@@ -12,6 +12,9 @@
 		--input-focus: #724abc;
 
 		--card-background: #0b0c0f;
+
+		--table-line: rgba(217, 217, 217, 0.2);
+		--table-hover: rgba(41, 47, 59, 0.5);
 	}
 
 	:global(*) {
