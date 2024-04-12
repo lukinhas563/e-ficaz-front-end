@@ -1,5 +1,13 @@
 <script lang="ts">
+	import IconTasks from '$lib/components/icons/IconTasks.svelte';
+	import IconEmployees from '$lib/components/icons/IconEmployees.svelte';
+	import IconCompany from '$lib/components/icons/IconCompany.svelte';
+	import IconDashboard from '$lib/components/icons/IconDashboard.svelte';
+
 	export let data;
+
+	const userId = data.user.id;
+	const collaboratorId = data.collaborator.id;
 </script>
 
 <header class="menu">
@@ -11,10 +19,18 @@
 <div class="container">
 	<aside class="lateral-menu">
 		<ul>
-			<li>oi</li>
-			<li>oi</li>
-			<li>oi</li>
-			<li>oi</li>
+			<li>
+				<a href={`/${userId}/${collaboratorId}`}><IconDashboard /></a>
+			</li>
+			<li>
+				<a href={`/${userId}/${collaboratorId}/companies`}><IconCompany /></a>
+			</li>
+			<li>
+				<a href={`/${userId}/${collaboratorId}/employees`}><IconEmployees /></a>
+			</li>
+			<li>
+				<a href={`/${userId}/${collaboratorId}/tasks`}><IconTasks /></a>
+			</li>
 		</ul>
 	</aside>
 
@@ -31,7 +47,7 @@
 	}
 
 	.lateral-menu {
-		margin: 10px;
+		margin-top: 10px;
 	}
 	.lateral-menu ul {
 		display: flex;
@@ -42,6 +58,18 @@
 		gap: 20px;
 
 		list-style: none;
+	}
+
+	.lateral-menu ul li {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		width: 100%;
+		height: 50px;
+	}
+	.lateral-menu ul li:hover {
+		border-left: 3px solid var(--main-color);
 	}
 
 	/* CONTAINER */
