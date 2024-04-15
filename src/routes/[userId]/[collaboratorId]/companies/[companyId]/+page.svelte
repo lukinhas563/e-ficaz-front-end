@@ -1,6 +1,9 @@
 <script lang="ts">
 	import TableEmployee from '$lib/components/TableEmployee.svelte';
 	import TableRegister from '$lib/components/TableRegister.svelte';
+	import TablePartner from '$lib/components/TablePartner.svelte';
+
+	let selected = 'employee';
 </script>
 
 <div class="container-info">
@@ -90,21 +93,35 @@
 		</div>
 		<div class="container-table-employees-partners">
 			<div class="container-options">
-				<p>Funcionarios</p>
-				<p>Socios</p>
+				<button
+					on:click={() => (selected = 'employee')}
+					class:selected={selected === 'employee' ? true : false}>Funcionários</button
+				>
+				<button
+					on:click={() => (selected = 'partner')}
+					class:selected={selected === 'partner' ? true : false}>Sócios</button
+				>
 			</div>
 
 			<div class="table-employee">
-				<TableEmployee />
+				{#if selected === 'employee'}
+					<TableEmployee />
+				{:else}
+					<TablePartner />
+				{/if}
 			</div>
 		</div>
 	</div>
 	<div class="container-registers">
+		<h3>Registros</h3>
 		<TableRegister />
 	</div>
 </div>
 
 <style>
+	h3 {
+		padding: 12px 0;
+	}
 	.activity-list {
 		list-style: none;
 	}
@@ -140,10 +157,21 @@
 		padding: 10px 20px;
 	}
 
-	.container-options p {
+	.container-options button {
+		background: none;
+
+		border: none;
+
+		color: var(--main-color);
+
+		font-size: 20px;
+
 		cursor: pointer;
 	}
-	.container-options p:hover {
+	.container-options button:hover {
+		text-decoration: underline;
+	}
+	.selected {
 		text-decoration: underline;
 	}
 
