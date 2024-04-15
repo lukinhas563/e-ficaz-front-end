@@ -1,142 +1,114 @@
 <script lang="ts">
-	import Input from './Input.svelte';
+	import ContainerCompanyInfo from './ContainerCompanyInfo.svelte';
+	import ContainerCompanyActivity from './ContainerCompanyActivity.svelte';
+	import ContainerCompanyAddress from './ContainerCompanyAddress.svelte';
+
+	let selected = 'info';
 </script>
 
 <form class="main-form" method="post">
-	<div class="container-company-info">
-		<label for="name">
-			Nome empresarial
-			<Input id="name" />
-		</label>
-		<label for="fantasyname">
-			Nome fantasia
-			<Input id="fantasyname" />
-		</label>
-		<label for="cnpj">
-			CNPJ
-			<Input id="cnpj" />
-		</label>
-
-		<div class="container-company-info-two">
-			<label for="opendate">
-				Abertura
-				<Input id="opendate" />
-			</label>
-			<label for="email">
-				E-mail
-				<Input id="email" />
-			</label>
-		</div>
+	<div class="container-stage">
+		<p class:selected={selected === 'info' ? true : false}>1</p>
+		<p class:selected={selected === 'activity' ? true : false}>2</p>
+		<p class:selected={selected === 'address' ? true : false}>3</p>
 	</div>
+	{#if selected === 'info'}
+		<ContainerCompanyInfo />
+	{:else if selected === 'activity'}
+		<ContainerCompanyActivity />
+	{:else if selected === 'address'}
+		<ContainerCompanyAddress />
+	{/if}
 
-	<div class="container-company-activity">
-		<label for="activity">
-			Atividade econômica principal
-			<Input id="activity" />
-		</label>
-		<div class="container-company-activity-two">
-			<label for="code">
-				Código
-				<Input id="code" />
-			</label>
-			<label for="secondactivity">
-				Atividade
-				<Input id="secondactivity" />
-			</label>
-		</div>
-	</div>
-
-	<div class="container-address">
-		<div class="container-address-two">
-			<label for="cep">
-				CEP
-				<Input id="cep" />
-			</label>
-			<label for="street">
-				Rua
-				<Input id="street" />
-			</label>
-		</div>
-
-		<div class="container-address-three">
-			<label for="number">
-				N°
-				<Input id="number" />
-			</label>
-			<label for="neighborhood">
-				Bairro
-				<Input id="neighborhood" />
-			</label>
-			<label for="complement">
-				Complemento
-				<Input id="complement" />
-			</label>
-		</div>
-
-		<div class="container-address-four">
-			<label for="city">
-				Municipio
-				<Input id="city" />
-			</label>
-			<label for="state">
-				Estado
-				<Input id="state" />
-			</label>
-		</div>
+	<div class="container-button">
+		{#if selected === 'info'}
+			<button on:click|preventDefault={() => (selected = 'activity')} class="next">Proximo</button>
+		{:else if selected === 'activity'}
+			<button on:click|preventDefault={() => (selected = 'info')} class="back">Voltar</button>
+			<button on:click|preventDefault={() => (selected = 'address')} class="next">Proximo</button>
+		{:else if selected === 'address'}
+			<button on:click|preventDefault={() => (selected = 'activity')} class="back">Voltar</button>
+			<button on:click|preventDefault={() => console.log('sended')} class="next">Enviar</button>
+		{/if}
 	</div>
 </form>
 
 <style>
 	.main-form {
+		position: relative;
+
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 
 		margin: 30px;
 
 		gap: 20px;
+
+		height: 80%;
 	}
 
-	/* container-company-info */
-	.container-company-info-two {
-		display: grid;
-		grid-template-columns: 1fr 3fr;
+	.container-stage {
+		position: absolute;
 
-		gap: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+
+		top: 0;
+
+		width: 100%;
 	}
 
-	/* container-company-activity */
-	.container-company-activity-two {
-		display: grid;
-		grid-template-columns: 1fr 3fr;
+	.container-stage p {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-		gap: 10px;
+		height: 50px;
+		width: 50px;
+
+		border-radius: 50%;
 	}
 
-	/* container-address */
-
-	.container-address {
-		border: 1px solid var(--table-line);
-
-		padding: 20px;
-	}
-	.container-address-two {
-		display: grid;
-		grid-template-columns: 1fr 2fr;
-
-		gap: 10px;
+	.selected {
+		background-color: var(--contrast-color);
 	}
 
-	.container-address-three {
-		display: grid;
-		grid-template-columns: 1fr 3fr 1fr;
+	.container-button {
+		display: flex;
 
-		gap: 10px;
+		position: absolute;
+
+		bottom: 0;
+
+		gap: 50px;
+
+		width: 100%;
 	}
 
-	.container-address-four {
-		display: grid;
-		grid-template-columns: 3fr 1fr;
+	.next {
+		border: none;
 
-		gap: 10px;
+		height: 30px;
+		width: 90px;
+
+		cursor: pointer;
+
+		color: var(--main-color);
+
+		background-color: var(--contrast-color);
+	}
+	.back {
+		border: none;
+
+		background: none;
+
+		cursor: pointer;
+
+		color: var(--main-color);
+	}
+	.back:hover {
+		text-decoration: underline;
 	}
 </style>
