@@ -117,7 +117,7 @@
 		align-items: center;
 		justify-content: space-between;
 
-		margin: 30px 0;
+		margin: 40px 0;
 	}
 	.container-search {
 		display: flex;
@@ -188,6 +188,6 @@
 
 		margin: 30px;
 
-		height: 200px;
+		height: 150px;
 	}
 </style>

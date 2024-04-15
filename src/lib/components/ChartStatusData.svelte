@@ -23,7 +23,7 @@
 				]
 			},
 			options: {
-				cutout: 70 // Define o valor do cutout para 0 para remover a borda branca
+				cutout: 50
 			}
 		});
 	}
@@ -98,8 +98,8 @@
 
 		position: absolute;
 
-		top: 80px;
-		left: 70px;
+		top: 55px;
+		left: 45px;
 	}
 
 	.value {

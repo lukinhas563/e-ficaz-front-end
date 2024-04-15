@@ -23,7 +23,7 @@
 				]
 			},
 			options: {
-				cutout: 70 // Define o valor do cutout para 0 para remover a borda branca
+				cutout: 50
 			}
 		});
 	}
@@ -34,7 +34,9 @@
 		<p>180</p>
 		<p>Empresas</p>
 	</div>
-	<canvas bind:this={ctx} width="1" height="0.5px"></canvas>
+
+	<canvas bind:this={ctx}></canvas>
+
 	<ul>
 		<li>
 			Empresas do <span class="simples">Simples Nacional</span>
@@ -98,8 +100,8 @@
 
 		position: absolute;
 
-		top: 80px;
-		left: 70px;
+		top: 55px;
+		left: 45px;
 	}
 
 	.value {
