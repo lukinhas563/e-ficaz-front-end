@@ -8,6 +8,8 @@
 
 	const userId = data.user.id;
 	const collaboratorId = data.collaborator.id;
+
+	let selected = 'dashboard';
 </script>
 
 <header class="menu">
@@ -19,17 +21,25 @@
 <div class="container">
 	<aside class="lateral-menu">
 		<ul>
-			<li>
-				<a href={`/${userId}/${collaboratorId}`}><IconDashboard /></a>
+			<li class:selected={selected === 'dashboard' ? true : false}>
+				<a href={`/${userId}/${collaboratorId}`} on:click={() => (selected = 'dashboard')}
+					><IconDashboard /></a
+				>
 			</li>
-			<li>
-				<a href={`/${userId}/${collaboratorId}/companies`}><IconCompany /></a>
+			<li class:selected={selected === 'companies' ? true : false}>
+				<a href={`/${userId}/${collaboratorId}/companies`} on:click={() => (selected = 'companies')}
+					><IconCompany /></a
+				>
 			</li>
-			<li>
-				<a href={`/${userId}/${collaboratorId}/employees`}><IconEmployees /></a>
+			<li class:selected={selected === 'employees' ? true : false}>
+				<a href={`/${userId}/${collaboratorId}/employees`} on:click={() => (selected = 'employees')}
+					><IconEmployees /></a
+				>
 			</li>
-			<li>
-				<a href={`/${userId}/${collaboratorId}/tasks`}><IconTasks /></a>
+			<li class:selected={selected === 'tasks' ? true : false}>
+				<a href={`/${userId}/${collaboratorId}/tasks`} on:click={() => (selected = 'tasks')}
+					><IconTasks /></a
+				>
 			</li>
 		</ul>
 	</aside>
@@ -69,6 +79,9 @@
 		height: 50px;
 	}
 	.lateral-menu ul li:hover {
+		border-left: 3px solid var(--main-color);
+	}
+	.selected {
 		border-left: 3px solid var(--main-color);
 	}
 
