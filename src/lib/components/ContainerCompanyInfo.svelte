@@ -19,11 +19,11 @@
 	<div class="container-company-info-two">
 		<label for="opendate">
 			Abertura
-			<Input id="opendate" />
+			<Input id="opendate" type="date" />
 		</label>
 		<label for="email">
 			E-mail
-			<Input id="email" />
+			<Input id="email" type="email" />
 		</label>
 	</div>
 </div>

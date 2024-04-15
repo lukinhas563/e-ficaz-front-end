@@ -5,6 +5,9 @@
 	import ButtonWhite from '$lib/components/ButtonWhite.svelte';
 	import { goto } from '$app/navigation';
 
+	import ChartTaxData from '$lib/components/ChartTaxData.svelte';
+	import ChartStatusData from '$lib/components/ChartStatusData.svelte';
+
 	const companies = [
 		{
 			id: 1,
@@ -64,6 +67,12 @@
 </Menu>
 
 <h1>Empresas</h1>
+
+<div class="chart">
+	<ChartTaxData />
+	<ChartStatusData />
+	<ChartTaxData />
+</div>
 
 <div class="container-filter">
 	<p>OI</p>
@@ -170,5 +179,15 @@
 	/* FORM */
 	.container-button-form {
 		margin: 20px 30px;
+	}
+
+	.chart {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		margin: 30px;
+
+		height: 200px;
 	}
 </style>
