@@ -3,6 +3,9 @@
 	import TableRegister from '$lib/components/TableRegister.svelte';
 	import TablePartner from '$lib/components/TablePartner.svelte';
 
+	export let data;
+	console.log(data);
+
 	let selected = 'employee';
 </script>
 

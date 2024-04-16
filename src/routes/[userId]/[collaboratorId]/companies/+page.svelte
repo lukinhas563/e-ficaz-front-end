@@ -8,40 +8,7 @@
 	import ChartTaxData from '$lib/components/ChartTaxData.svelte';
 	import ChartStatusData from '$lib/components/ChartStatusData.svelte';
 
-	const companies = [
-		{
-			id: 1,
-			name: 'Carlos Manoel Nobrega',
-			fantasyName: 'Lavagem e Armazem Ltda',
-			cnpj: '11.111.111/0001-11',
-			regime: 'Simples nacional',
-			status: 'Ativo'
-		},
-		{
-			id: 1,
-			name: 'Carlos Manoel Nobrega',
-			fantasyName: 'Lavagem e Armazem Ltda',
-			cnpj: '11.111.111/0001-11',
-			regime: 'Simples nacional',
-			status: 'Ativo'
-		},
-		{
-			id: 1,
-			name: 'Carlos Manoel Nobrega',
-			fantasyName: 'Lavagem e Armazem Ltda',
-			cnpj: '11.111.111/0001-11',
-			regime: 'Simples nacional',
-			status: 'Ativo'
-		},
-		{
-			id: 1,
-			name: 'Carlos Manoel Nobrega',
-			fantasyName: 'Lavagem e Armazem Ltda',
-			cnpj: '11.111.111/0001-11',
-			regime: 'Simples nacional',
-			status: 'Ativo'
-		}
-	];
+	export let data;
 
 	let isOpen = false;
 
@@ -95,7 +62,7 @@
 		</tr>
 	</thead>
 	<tbody class="table-body">
-		{#each companies as company}
+		{#each data.companies as company}
 			<tr on:click={(e) => handlePage(e)}>
 				<td>OI</td>
 				<td class="id">{company.id}</td>
