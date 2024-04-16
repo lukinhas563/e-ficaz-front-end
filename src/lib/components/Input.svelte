@@ -2,9 +2,19 @@
 	export let type = 'text';
 	export let name = 'input';
 	export let id = '';
+
+	export let value = '';
 </script>
 
-<input {type} {name} {id} />
+{#if type === 'text'}
+	<input type="text" {name} {id} bind:value />
+{:else if type === 'number'}
+	<input type="number" {name} {id} bind:value />
+{:else if type === 'email'}
+	<input type="email" {name} {id} bind:value />
+{:else}
+	<input type="text" {name} {id} bind:value />
+{/if}
 
 <style>
 	input {

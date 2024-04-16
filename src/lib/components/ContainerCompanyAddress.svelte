@@ -6,37 +6,37 @@
 	<div class="container-address-two">
 		<label for="cep">
 			CEP
-			<Input id="cep" />
+			<Input id="cep" name="cep" />
 		</label>
 		<label for="street">
 			Rua
-			<Input id="street" />
+			<Input id="street" name="street" />
 		</label>
 	</div>
 
 	<div class="container-address-three">
 		<label for="number">
 			N°
-			<Input id="number" />
+			<Input id="number" name="number" />
 		</label>
 		<label for="neighborhood">
 			Bairro
-			<Input id="neighborhood" />
+			<Input id="neighborhood" name="neighborhood" />
 		</label>
 		<label for="complement">
 			Complemento
-			<Input id="complement" />
+			<Input id="complement" name="complement" />
 		</label>
 	</div>
 
 	<div class="container-address-four">
 		<label for="city">
 			Municipio
-			<Input id="city" />
+			<Input id="city" name="city" />
 		</label>
 		<label for="state">
 			Estado
-			<Input id="state" />
+			<Input id="state" name="state" />
 		</label>
 	</div>
 </div>

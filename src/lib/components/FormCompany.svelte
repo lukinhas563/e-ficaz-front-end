@@ -28,7 +28,7 @@
 			<button on:click|preventDefault={() => (selected = 'address')} class="next">Proximo</button>
 		{:else if selected === 'address'}
 			<button on:click|preventDefault={() => (selected = 'activity')} class="back">Voltar</button>
-			<button on:click|preventDefault={() => console.log('sended')} class="next">Enviar</button>
+			<button class="next">Enviar</button>
 		{/if}
 	</div>
 </form>
